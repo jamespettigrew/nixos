@@ -30,8 +30,8 @@
         spotify.enable = true;
       };
       term = {
-        default = "xst";
-        st.enable = true;
+        default = "alacritty";
+        alacritty.enable = true;
       };
       vm = {
         qemu.enable = true;
