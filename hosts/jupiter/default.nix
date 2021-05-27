@@ -21,11 +21,6 @@
         firefox.enable = true;
         qutebrowser.enable = true;
       };
-      gaming = {
-        #steam.enable = true;
-        # emulators.enable = true;
-        # emulators.psx.enable = true;
-      };
       media = {
         daw.enable = true;
         documents.enable = true;
