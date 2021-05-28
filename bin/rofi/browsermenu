@@ -2,7 +2,7 @@
 #! nix-shell -p ruby_2_7 rubyPackages_2_7.sqlite3 -i "ruby -S" --quiet
 
 # Open your browser bookmarks or history in your default browser. Currently
-# works with Firefox, Brave, and qutebrowser.
+# works with Firefox.
 
 require 'shellwords'
 require 'sqlite3'
@@ -69,14 +69,6 @@ def get_bookmarks browser
             "LIMIT 200"].join(' ')
       end
     end
-  when :brave
-    f = File.read "#{ENV['XDG_CONFIG_HOME']}/BraveSoftware/Brave-Browser/Default/Bookmarks"
-    data = JSON.parse f
-    walk_json data["roots"]["bookmark_bar"]["children"]
-  when :qutebrowser
-    bookmarks = File.readlines "#{ENV['XDG_CONFIG_HOME']}/qutebrowser/bookmarks/urls"
-    bookmarks.map { |s| s.strip.split(' ', 2).reverse }
-  end
 end
 
 def get_history browser
@@ -98,16 +90,6 @@ def get_history browser
       end
     end
     return []
-  when :brave
-    db "#{ENV['XDG_CONFIG_HOME']}/BraveSoftware/Brave-Browser/Default/History",
-       "SELECT title, url FROM urls GROUP BY url ORDER BY last_visit_time DESC LIMIT 200"
-  when :qutebrowser
-    db "#{ENV['XDG_DATA_HOME']}/qutebrowser/history.sqlite",
-       ["SELECT title, url FROM History",
-        "WHERE title != ''",
-        "GROUP BY url",
-        "ORDER BY atime DESC"].join(' ')
-  end
 end
 
 def list urls

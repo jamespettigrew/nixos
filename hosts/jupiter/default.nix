@@ -16,10 +16,8 @@
         signal.enable = true;
       };
       browsers = {
-        default = "brave";
-        brave.enable = true;
+        default = "firefox";
         firefox.enable = true;
-        qutebrowser.enable = true;
       };
       media = {
         daw.enable = true;
