@@ -12,27 +12,20 @@
       apps = {
         discord.enable = true;
         rofi.enable = true;
-        # godot.enable = true;
-        signal.enable = true;
       };
       browsers = {
         default = "firefox";
         firefox.enable = true;
       };
       media = {
-        daw.enable = true;
         documents.enable = true;
         graphics.enable = true;
-        mpv.enable = true;
         recording.enable = true;
         spotify.enable = true;
       };
       term = {
         default = "alacritty";
         alacritty.enable = true;
-      };
-      vm = {
-        qemu.enable = true;
       };
     };
     editors = {
@@ -41,7 +34,6 @@
       vim.enable = true;
     };
     shell = {
-      adl.enable = true;
       bitwarden.enable = true;
       direnv.enable = true;
       git.enable    = true;
@@ -52,8 +44,6 @@
     services = {
       ssh.enable = true;
       docker.enable = true;
-      # Needed occasionally to help the parental units with PC problems
-      # teamviewer.enable = true;
     };
     theme.active = "alucard";
   };
