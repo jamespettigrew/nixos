@@ -69,7 +69,7 @@ font-2 = "Siji:pixelsize=10;2"
 ; modules-left = volume pad cpu memory pad pkg mail
 modules-left = pulseaudio pad cpu memory pad fs
 modules-center = bspwm
-modules-right = syncthing redshift wlan pad network-up pad network-down pad battery pad date
+modules-right = redshift wlan pad network-up pad network-down pad battery pad date
 
 ;tray-position = center
 ;tray-padding = 2
@@ -373,13 +373,5 @@ exec = ~/.config/polybar/modules/redshift
 exec-if = pgrep -x redshift
 interval = 60
 format-padding = 1
-
-[module/syncthing]
-type = custom/script
-exec = echo 1
-exec-if = systemctl is-active syncthing
-format = ""
-format-foreground = ${colors.fg}
-interval = 30
 
 ; vim:ft=dosini
