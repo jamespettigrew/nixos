@@ -10,10 +10,25 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    extraModulePackages = [ ];
+    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+    initrd.kernelModules = [ "amdgpu" ];
+    kernelModules = [ "kvm-amd" ];
+    kernelParams = [
+      "radeon.si_support=0"
+      "amdgpu.si_support=1"
+      "radeon.cik_support=0"
+      "amdgpu.cik_support=1"
+      # Disable fixes for Spectre, Meltdown etc.
+      "mitigations=off"
+    ];
+  };
+
+  hardware.cpu.amd.updateMicrocode = true;
+  # high-resolution display
+  hardware.video.hidpi.enable = lib.mkDefault true;
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/8e8de144-347f-4f13-a86e-3fde7bbce087";
@@ -25,11 +40,15 @@
       fsType = "vfat";
     };
 
+
+  modules.hardware = {
+    fs = {
+      enable = true;
+      ssd.enable = true;
+    };
+  };
+
   swapDevices = [ ];
-
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
-
 }
 
 
