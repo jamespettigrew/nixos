@@ -21,5 +21,9 @@ in {
         categories = "Development;System;Utility";
       })
     ];
+
+    home.configFile = {
+      "alacritty.yml".source = "${configDir}/alacritty/alacritty.yml";
+    };
   };
 }
