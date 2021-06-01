@@ -17,6 +17,10 @@
         default = "firefox";
         firefox.enable = true;
       };
+      dev = {
+        datagrip.enable = true;
+        rider.enable = true;
+      };
       media = {
         documents.enable = true;
         graphics.enable = true;
