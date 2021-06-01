@@ -48,6 +48,7 @@
     services = {
       ssh.enable = true;
       docker.enable = true;
+      openfortivpn.enable = true;
     };
     theme.active = "alucard";
   };
