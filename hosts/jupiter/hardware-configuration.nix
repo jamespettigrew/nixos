@@ -43,6 +43,7 @@
 
   modules.hardware = {
     audio.enable = true;
+    bluetooth.enable = true;
     fs = {
       enable = true;
       ssd.enable = true;

@@ -25,6 +25,7 @@ in {
 
       hardware.bluetooth.extraConfig = ''
         [General]
+        Disable=Headset
         Enable=Source,Sink,Media,Socket
       '';
     })

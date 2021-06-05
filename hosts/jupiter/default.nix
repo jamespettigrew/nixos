@@ -52,6 +52,29 @@
     theme.active = "alucard";
   };
 
+  # Provide headphone functionality
+  systemd.user.services.bluetooth_headphones_autoconnect = {
+    enable = true;
+    description = "Automatically connects to Bluetooth headphones";
+    requires = [ "bluetooth.service" ];
+    after = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart="/run/current-system/sw/bin/bluetoothctl connect 00:1B:66:B4:58:4C";
+    };
+  };
+  services.blueman.enable = true;
+  systemd.user.services.mpris-proxy = {
+    enable = true;
+    description = "Mpris proxy";
+    after = [ "network.target" "sound.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+    };
+    wantedBy = [ "default.target" ];
+  };
 
   ## Local config
   programs.ssh.startAgent = true;
