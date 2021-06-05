@@ -42,6 +42,7 @@
 
 
   modules.hardware = {
+    audio.enable = true;
     fs = {
       enable = true;
       ssd.enable = true;
