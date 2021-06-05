@@ -17,8 +17,6 @@ in {
     tools.enable   = mkBoolOpt true;
     raster.enable  = mkBoolOpt true;
     vector.enable  = mkBoolOpt true;
-    sprites.enable = mkBoolOpt true;
-    models.enable  = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
@@ -35,19 +33,8 @@ in {
 
       # Replaces photoshop
       (if cfg.raster.enable then [
-        krita
         gimp
         gimpPlugins.resynthesizer  # content-aware scaling in gimp
-      ] else []) ++
-
-      # Sprite sheets & animation
-      (if cfg.sprites.enable then [
-        aseprite-unfree
-      ] else []) ++
-
-      # 3D modelling
-      (if cfg.models.enable then [
-        blender
       ] else []);
 
     home.configFile = mkIf cfg.raster.enable {

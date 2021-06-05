@@ -24,7 +24,6 @@
       media = {
         documents.enable = true;
         graphics.enable = true;
-        recording.enable = true;
         spotify.enable = true;
       };
       term = {
