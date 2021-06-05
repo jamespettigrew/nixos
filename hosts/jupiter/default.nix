@@ -12,6 +12,7 @@
       apps = {
         discord.enable = true;
         rofi.enable = true;
+        zoom.enable = true;
       };
       browsers = {
         default = "firefox";
