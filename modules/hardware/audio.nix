@@ -27,5 +27,6 @@ in {
         "${paConfigFile}/default.pa";
 
     user.extraGroups = [ "audio" ];
+    user.packages = [ pkgs.pavucontrol ];
   };
 }
