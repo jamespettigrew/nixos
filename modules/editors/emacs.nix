@@ -54,8 +54,6 @@ in {
       nodePackages.javascript-typescript-langserver
       # :lang latex & :lang org (latex previews)
       texlive.combined.scheme-medium
-      # :lang beancount
-      beancount
       fava
       # :lang rust
       rustfmt
@@ -68,17 +66,16 @@ in {
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
-    # init.doomEmacs = mkIf cfg.doom.enable ''
-    #   if [ -d $HOME/.config/emacs ]; then
-    #      ${optionalString cfg.doom.fromSSH ''
-    #         git clone git@github.com:hlissner/doom-emacs.git $HOME/.config/emacs
-    #         git clone git@github.com:hlissner/doom-emacs-private.git $HOME/.config/doom
-    #      ''}
-    #      ${optionalString (cfg.doom.fromSSH == false) ''
-    #         git clone https://github.com/hlissner/doom-emacs $HOME/.config/emacs
-    #         git clone https://github.com/hlissner/doom-emacs-private $HOME/.config/doom
-    #      ''}
-    #   fi
-    # '';
+    home.configFile = mkIf cfg.doom.enable {
+      "doom".source = "${configDir}/doom";
+    };
+
+    system.userActivationScripts = mkIf cfg.doom.enable {
+      initDoomEmacs.text = ''
+        if [ ! -d $XDG_CONFIG_HOME/emacs ]; then
+          ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs "$XDG_CONFIG_HOME/emacs"
+        fi
+      '';
+    };
   };
 }
