@@ -36,6 +36,14 @@ in {
           exec = "${firefox-bin}/bin/firefox --private-window";
           categories = "Network";
         })
+        (makeDesktopItem {
+          name = "firefox-carsales";
+          desktopName = "Firefox (carsales)";
+          genericName = "Open Firefox (carsales)";
+          icon = "firefox";
+          exec = "${firefox-bin}/bin/firefox -P carsales";
+          categories = "Network";
+        })
       ];
 
       # Prevent auto-creation of ~/Desktop. The trailing slash is necessary; see
@@ -130,6 +138,12 @@ in {
           IsRelative=1
           Path=${cfg.profileName}.default
           Default=1
+
+          [Profile1]
+          Name=carsales
+          IsRelative=1
+          Path=carsales.default
+          Default=0
 
           [General]
           StartWithLastProfile=1
