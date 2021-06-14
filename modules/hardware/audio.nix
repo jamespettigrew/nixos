@@ -26,6 +26,12 @@ in {
       in mkIf config.hardware.pulseaudio.enable
         "${paConfigFile}/default.pa";
 
+    # Mic echo cancellation
+    hardware.pulseaudio.extraConfig = ''
+      load-module module-echo-cancel source_name=noecho
+      set-default-source noecho
+    '';
+
     user.extraGroups = [ "audio" ];
     user.packages = [ pkgs.pavucontrol ];
   };
