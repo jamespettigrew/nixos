@@ -81,6 +81,12 @@
     wantedBy = [ "default.target" ];
   };
 
+  system.userActivationScripts.symbolic_link_downloads.text = ''
+    if [[ ! -h "$HOME/Downloads" ]]; then
+        ln -s "/misc/downloads" "$HOME/Downloads"
+    fi
+  '';
+
   ## Local config
   programs.ssh.startAgent = true;
   services.openssh.startWhenNeeded = true;
