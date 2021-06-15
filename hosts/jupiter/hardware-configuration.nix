@@ -40,6 +40,10 @@
       fsType = "vfat";
     };
 
+  fileSystems."/misc" =
+    { device = "/dev/disk/by-label/misc";
+      fsType = "ext4";
+    };
 
   modules.hardware = {
     audio.enable = true;
