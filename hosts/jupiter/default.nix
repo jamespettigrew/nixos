@@ -32,6 +32,9 @@
         alacritty.enable = true;
       };
     };
+    dev = {
+        dotnet.enable = true;
+    };
     editors = {
       default = "nvim";
       emacs = {
