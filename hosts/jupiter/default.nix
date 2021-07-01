@@ -21,6 +21,7 @@
       };
       dev = {
         datagrip.enable = true;
+        postman.enable = true;
         rider.enable = true;
       };
       media = {
