@@ -11,6 +11,7 @@
       bspwm.enable = true;
       apps = {
         discord.enable = true;
+        keepass.enable = true;
         rofi.enable = true;
         zoom.enable = true;
       };
