@@ -36,9 +36,5 @@ in {
         gimp
         gimpPlugins.resynthesizer  # content-aware scaling in gimp
       ] else []);
-
-    home.configFile = mkIf cfg.raster.enable {
-      "GIMP/2.10" = { source = "${configDir}/gimp"; recursive = true; };
-    };
   };
 }

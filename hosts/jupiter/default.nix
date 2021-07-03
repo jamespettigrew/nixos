@@ -52,7 +52,6 @@
       git.enable    = true;
       gnupg.enable  = true;
       saml2aws.enable = true;
-      tmux.enable   = true;
       zsh.enable    = true;
     };
     services = {
