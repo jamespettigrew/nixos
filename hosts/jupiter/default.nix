@@ -36,6 +36,7 @@
     };
     dev = {
         dotnet.enable = true;
+        rust.enable = true;
     };
     editors = {
       default = "nvim";
