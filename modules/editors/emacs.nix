@@ -66,14 +66,13 @@ in {
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
-    home.configFile = mkIf cfg.doom.enable {
-      "doom".source = "${configDir}/doom";
-    };
-
     system.userActivationScripts = mkIf cfg.doom.enable {
       initDoomEmacs.text = ''
         if [ ! -d $XDG_CONFIG_HOME/emacs ]; then
           ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs "$XDG_CONFIG_HOME/emacs"
+        fi
+        if [ ! -d $XDG_CONFIG_HOME/doom ]; then
+          ${pkgs.git}/bin/git clone https://github.com/jamespettigrew/doom-emacs-config "$XDG_CONFIG_HOME/doom"
         fi
       '';
     };
