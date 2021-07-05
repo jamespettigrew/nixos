@@ -10,7 +10,10 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      dotnet-sdk_5
+      (with dotnetCorePackages; combinePackages [
+        sdk_5_0
+        sdk_3_1
+      ])
     ];
   };
 }
