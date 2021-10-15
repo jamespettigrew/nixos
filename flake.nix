@@ -1,20 +1,11 @@
-# flake.nix --- the heart of my dotfiles
-#
-# Author:  Henrik Lissner <henrik@lissner.net>
-# URL:     https://github.com/hlissner/dotfiles
-# License: MIT
-#
-# Welcome to ground zero. Where the whole flake gets set up and all its modules
-# are loaded.
-
 {
-  description = "A grossly incandescent nixos config.";
+  description = "NixOS configuration";
 
   inputs = 
     {
       # Core dependencies.
-      nixpkgs.url = "nixpkgs/nixos-unstable";     # primary nixpkgs
-      nixpkgs-unstable.url = "nixpkgs/master";    # for packages on the edge
+      nixpkgs.url = "nixpkgs/nixos-21.05";     # primary nixpkgs
+      nixpkgs-unstable.url = "nixpkgs/nixos-unstable";    # for packages on the edge
       home-manager.url = "github:rycee/home-manager/master";
       home-manager.inputs.nixpkgs.follows = "nixpkgs";
       agenix.url = "github:ryantm/agenix";
