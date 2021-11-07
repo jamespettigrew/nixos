@@ -36,6 +36,8 @@
     };
     dev = {
         dotnet.enable = true;
+        go.enable = true;
+        go.enableGlobally = true;
         rust.enable = true;
     };
     editors = {
