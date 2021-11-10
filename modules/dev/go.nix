@@ -11,7 +11,15 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     (mkIf cfg.enableGlobally {
-      user.packages = [ pkgs.go ];
+      user.packages = with pkgs; [
+        go
+        gocode
+        gomodifytags
+        gopls
+        gore
+        go-tools
+        gotests
+      ];
     })
 
     {
